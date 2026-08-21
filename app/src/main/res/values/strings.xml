@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Moscool AI Agent</string>
+    <string name="accessibility_service_label">Moscool AI – UI Automation</string>
+    <string name="accessibility_service_description">Allows Moscool AI Agent to interact with other apps on your behalf to complete tasks you request, such as creating social media posts.</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_agent">Agent</string>
+    <string name="nav_history">History</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Home -->
+    <string name="home_title">Moscool AI Agent</string>
+    <string name="home_subtitle">Your AI-powered phone assistant</string>
+    <string name="home_command_hint">What would you like me to do?</string>
+    <string name="home_execute">Execute</string>
+    <string name="home_status_idle">Ready</string>
+    <string name="home_status_working">Working…</string>
+    <string name="home_accessibility_disabled">Accessibility service is disabled</string>
+    <string name="home_accessibility_enabled">Accessibility service is active</string>
+    <string name="home_ai_configured">AI provider configured</string>
+    <string name="home_ai_not_configured">No AI provider configured</string>
+
+    <!-- Agent -->
+    <string name="agent_title">Agent</string>
+    <string name="agent_stop">STOP AGENT</string>
+    <string name="agent_status_idle">Idle</string>
+    <string name="agent_status_understanding">Understanding request…</string>
+    <string name="agent_status_planning">Creating plan…</string>
+    <string name="agent_status_executing">Executing…</string>
+    <string name="agent_status_verifying">Verifying…</string>
+    <string name="agent_status_waiting">Waiting for confirmation</string>
+    <string name="agent_status_completed">Completed</string>
+    <string name="agent_status_failed">Failed</string>
+    <string name="agent_status_cancelled">Cancelled</string>
+
+    <!-- Preview -->
+    <string name="preview_title">Post Preview</string>
+    <string name="preview_edit">Edit</string>
+    <string name="preview_regenerate">Regenerate</string>
+    <string name="preview_approve">Approve &amp; Continue</string>
+    <string name="preview_cancel">Cancel</string>
+
+    <!-- History -->
+    <string name="history_title">Task History</string>
+    <string name="history_empty">No tasks yet</string>
+    <string name="history_clear">Clear History</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_ai_provider">AI Provider</string>
+    <string name="settings_api_key">API Key</string>
+    <string name="settings_model">Model</string>
+    <string name="settings_base_url">Base URL</string>
+    <string name="settings_automation_mode">Automation Mode</string>
+    <string name="settings_mode_safe">Safe Mode</string>
+    <string name="settings_mode_assisted">Assisted Mode</string>
+    <string name="settings_mode_autonomous">Autonomous Mode</string>
+    <string name="settings_accessibility">Accessibility Service</string>
+    <string name="settings_enable_accessibility">Enable Accessibility Service</string>
+    <string name="settings_vision">Vision</string>
+    <string name="settings_debug_logging">Debug Logging</string>
+    <string name="settings_clear_history">Clear History</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version %1$s</string>
+    <string name="settings_save">Save</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome">Welcome to Moscool AI Agent</string>
+    <string name="onboarding_step1_title">AI Provider Setup</string>
+    <string name="onboarding_step1_desc">Configure your AI provider to enable intelligent task execution. You can use OpenAI, Gemini, OpenRouter, Groq, or any OpenAI-compatible endpoint.</string>
+    <string name="onboarding_step2_title">Accessibility Service</string>
+    <string name="onboarding_step2_desc">The Accessibility Service allows Moscool AI Agent to interact with other apps on your behalf. It reads UI elements and performs actions like tapping buttons and entering text.</string>
+    <string name="onboarding_step3_title">You\'re All Set</string>
+    <string name="onboarding_step3_desc">You can now give natural-language commands and let the agent work for you. Start with something simple like "Open Facebook" or "Create a post about AC maintenance."</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_back">Back</string>
+    <string name="onboarding_finish">Get Started</string>
+    <string name="onboarding_enable_accessibility">Enable Accessibility Service</string>
+    <string name="onboarding_configure_ai">Configure AI Provider</string>
+
+    <!-- Confirmation -->
+    <string name="confirm_title">Confirm Action</string>
+    <string name="confirm_publish_post">The agent wants to publish this post on Facebook. Allow?</string>
+    <string name="confirm_send_message">The agent wants to send this message. Allow?</string>
+    <string name="confirm_approve">Approve</string>
+    <string name="confirm_deny">Deny</string>
+
+    <!-- Errors -->
+    <string name="error_ai_unavailable">AI provider unavailable. Check your internet connection or provider settings.</string>
+    <string name="error_element_not_found">Could not find the required UI element. The app layout may have changed.</string>
+    <string name="error_facebook_not_installed">Facebook is not installed on this device.</string>
+    <string name="error_accessibility_disabled">Accessibility service is required for automation. Please enable it in Settings.</string>
+    <string name="error_api_key_missing">API key is required. Please configure your AI provider in Settings.</string>
+    <string name="error_network">Network error. Please check your internet connection.</string>
+    <string name="error_timeout">Action timed out. The agent stopped rather than guessing.</string>
+
+    <!-- Debug -->
+    <string name="debug_title">Debug Log</string>
+    <string name="debug_export">Export Log</string>
+    <string name="debug_clear">Clear Log</string>
+</resources>
