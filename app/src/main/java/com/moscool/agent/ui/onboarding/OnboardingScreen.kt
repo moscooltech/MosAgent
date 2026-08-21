@@ -7,6 +7,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,7 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Accessibility
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Robot
+import androidx.compose.material.icons.filled.SmartToy
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -61,7 +62,7 @@ fun OnboardingScreen(
     ) { step ->
         when (step) {
             0 -> OnboardingStep(
-                icon = Icons.Default.Robot,
+                icon = Icons.Default.SmartToy,
                 title = "Welcome to Moscool AI Agent",
                 description = "Your AI-powered phone assistant that can understand natural language commands and perform tasks on your device.\n\nLet's set up a few things to get started.",
                 primaryButton = "Next",
@@ -69,7 +70,7 @@ fun OnboardingScreen(
             )
 
             1 -> OnboardingStep(
-                icon = Icons.Default.Robot,
+                icon = Icons.Default.SmartToy,
                 title = "AI Provider Setup",
                 description = "Configure your AI provider to enable intelligent task execution.\n\nYou can use OpenAI, Gemini, OpenRouter, Groq, or any OpenAI-compatible endpoint.",
                 primaryButton = "Configure AI Provider",

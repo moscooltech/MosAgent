@@ -59,7 +59,7 @@ class ActionExecutor(
     }
 
     private suspend fun executeCloseApp(action: AgentAction): ActionResult {
-        accessibilityController.performGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_RECENTS)
+        accessibilityController.executeGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_RECENTS)
         delay(500)
         return ActionResult(success = true, message = "App overview opened")
     }
@@ -185,13 +185,13 @@ class ActionExecutor(
     }
 
     private suspend fun executePressBack(): ActionResult {
-        accessibilityController.performGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_BACK)
+        accessibilityController.executeGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_BACK)
         delay(500)
         return ActionResult(success = true, message = "Pressed back")
     }
 
     private suspend fun executePressHome(): ActionResult {
-        accessibilityController.performGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_HOME)
+        accessibilityController.executeGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_HOME)
         delay(500)
         return ActionResult(success = true, message = "Pressed home")
     }
@@ -235,7 +235,7 @@ class ActionExecutor(
         return if (element != null) {
             ActionResult(
                 success = true,
-                message = "Found: text=${element.text}, desc=${element.contentDescription}, id=${element.resourceId}"
+                message = "Found: text=${element.text}, desc=${element.contentDescription}, id=${element.viewIdResourceName}"
             )
         } else {
             ActionResult(success = false, message = "Element not found")

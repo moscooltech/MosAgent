@@ -8,14 +8,11 @@ import com.moscool.agent.model.TokenUsage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonArray
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.contentOrNull
-import kotlinx.serialization.json.double
 import kotlinx.serialization.json.int
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
@@ -73,32 +70,32 @@ class OpenAIProvider(private val config: AIProviderConfig) : AIProvider {
         maxTokens: Int
     ): String {
         val body = buildJsonObject {
-            put("model", config.model)
+            put("model", JsonPrimitive(config.model))
             put("messages", buildJsonArray {
                 messages.forEach { msg ->
                     add(buildJsonObject {
-                        put("role", msg.role)
-                        put("content", msg.content)
+                        put("role", JsonPrimitive(msg.role))
+                        put("content", JsonPrimitive(msg.content))
                     })
                 }
             })
-            put("temperature", temperature)
-            put("max_tokens", maxTokens)
+            put("temperature", JsonPrimitive(temperature))
+            put("max_tokens", JsonPrimitive(maxTokens))
             if (!tools.isNullOrEmpty()) {
                 put("tools", buildJsonArray {
                     tools.forEach { tool ->
                         add(buildJsonObject {
-                            put("type", "function")
+                            put("type", JsonPrimitive("function"))
                             put("function", buildJsonObject {
-                                put("name", tool.name)
-                                put("description", tool.description)
+                                put("name", JsonPrimitive(tool.name))
+                                put("description", JsonPrimitive(tool.description))
                                 put("parameters", buildJsonObject {
-                                    put("type", "object")
+                                    put("type", JsonPrimitive("object"))
                                     val props = buildJsonObject {
                                         tool.parameters.forEach { (key, param) ->
                                             put(key, buildJsonObject {
-                                                put("type", param.type)
-                                                put("description", param.description)
+                                                put("type", JsonPrimitive(param.type))
+                                                put("description", JsonPrimitive(param.description))
                                                 if (!param.enum.isNullOrEmpty()) {
                                                     put("enum", buildJsonArray {
                                                         param.enum.forEach { add(JsonPrimitive(it)) }
@@ -131,43 +128,43 @@ class OpenAIProvider(private val config: AIProviderConfig) : AIProvider {
         tools: List<ToolDefinition>?
     ): String {
         val body = buildJsonObject {
-            put("model", config.model)
+            put("model", JsonPrimitive(config.model))
             put("messages", buildJsonArray {
                 messages.forEach { msg ->
                     if (msg.role == "user") {
                         add(buildJsonObject {
-                            put("role", "user")
+                            put("role", JsonPrimitive("user"))
                             put("content", buildJsonArray {
                                 add(buildJsonObject {
-                                    put("type", "text")
-                                    put("text", msg.content)
+                                    put("type", JsonPrimitive("text"))
+                                    put("text", JsonPrimitive(msg.content))
                                 })
                                 add(buildJsonObject {
-                                    put("type", "image_url")
+                                    put("type", JsonPrimitive("image_url"))
                                     put("image_url", buildJsonObject {
-                                        put("url", "data:$mimeType;base64,$imageBase64")
+                                        put("url", JsonPrimitive("data:$mimeType;base64,$imageBase64"))
                                     })
                                 })
                             })
                         })
                     } else {
                         add(buildJsonObject {
-                            put("role", msg.role)
-                            put("content", msg.content)
+                            put("role", JsonPrimitive(msg.role))
+                            put("content", JsonPrimitive(msg.content))
                         })
                     }
                 }
             })
-            put("temperature", 0.7)
-            put("max_tokens", 4096)
+            put("temperature", JsonPrimitive(0.7))
+            put("max_tokens", JsonPrimitive(4096))
             if (!tools.isNullOrEmpty()) {
                 put("tools", buildJsonArray {
                     tools.forEach { tool ->
                         add(buildJsonObject {
-                            put("type", "function")
+                            put("type", JsonPrimitive("function"))
                             put("function", buildJsonObject {
-                                put("name", tool.name)
-                                put("description", tool.description)
+                                put("name", JsonPrimitive(tool.name))
+                                put("description", JsonPrimitive(tool.description))
                             })
                         })
                     }

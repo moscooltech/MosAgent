@@ -221,9 +221,9 @@ class AccessibilityController : AccessibilityService() {
         }
     }
 
-    fun performGlobalAction(action: Int): Boolean {
+    fun executeGlobalAction(action: Int): Boolean {
         return try {
-            performGlobalAction(action)
+            super.performGlobalAction(action)
         } catch (e: Exception) {
             Log.e(TAG, "Failed to perform global action: ${e.message}")
             false

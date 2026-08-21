@@ -88,12 +88,12 @@ class MainViewModel : ViewModel() {
 
     private var agentEngine: AgentEngine? = null
 
-    val statusMessage: StateFlow<String>
-    val taskState: StateFlow<TaskState>
-    val timelineEvents: StateFlow<List<AgentEngine.TimelineEvent>>
-    val generatedPost: StateFlow<SocialPost?>
-    val needsConfirmation: StateFlow<Boolean>
-    val confirmationMessage: StateFlow<String>
+    var statusMessage: StateFlow<String> = MutableStateFlow("")
+    var taskState: StateFlow<TaskState> = MutableStateFlow(TaskState.IDLE)
+    var timelineEvents: StateFlow<List<AgentEngine.TimelineEvent>> = MutableStateFlow(emptyList())
+    var generatedPost: StateFlow<SocialPost?> = MutableStateFlow(null)
+    var needsConfirmation: StateFlow<Boolean> = MutableStateFlow(false)
+    var confirmationMessage: StateFlow<String> = MutableStateFlow("")
 
     val taskHistory: StateFlow<List<Task>> = taskRepo.allTasks.stateIn(
         viewModelScope, SharingStarted.Lazily, emptyList()
@@ -139,12 +139,14 @@ class MainViewModel : ViewModel() {
             appLauncher = appLauncher,
             logRepository = app.logRepository
         )
-        statusMessage = agentEngine?.statusMessage ?: MutableStateFlow("")
-        taskState = agentEngine?.taskState ?: MutableStateFlow(TaskState.IDLE)
-        timelineEvents = agentEngine?.timelineEvents ?: MutableStateFlow(emptyList())
-        generatedPost = agentEngine?.generatedPost ?: MutableStateFlow(null)
-        needsConfirmation = agentEngine?.needsConfirmation ?: MutableStateFlow(false)
-        confirmationMessage = agentEngine?.confirmationMessage ?: MutableStateFlow("")
+        agentEngine?.let { engine ->
+            statusMessage = engine.statusMessage
+            taskState = engine.taskState
+            timelineEvents = engine.timelineEvents
+            generatedPost = engine.generatedPost
+            needsConfirmation = engine.needsConfirmation
+            confirmationMessage = engine.confirmationMessage
+        }
     }
 
     fun executeCommand(command: String) {
