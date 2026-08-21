@@ -13,7 +13,7 @@ class ToolRegistryTest {
     fun `getAllTools returns all registered tools`() {
         val tools = ToolRegistry.getAllTools()
         assertTrue(tools.isNotEmpty())
-        assertEquals(17, tools.size)
+        assertEquals(18, tools.size)
     }
 
     @Test
