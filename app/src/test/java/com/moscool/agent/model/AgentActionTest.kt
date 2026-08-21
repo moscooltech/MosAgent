@@ -40,8 +40,7 @@ class AgentActionTest {
         val target = ActionTarget(
             text = "Submit",
             contentDescription = "Submit button",
-            resourceId = "com.example:id/submit",
-            isClickable = true
+            resourceId = "com.example:id/submit"
         )
         assertEquals("Submit", target.text)
         assertEquals("Submit button", target.contentDescription)
